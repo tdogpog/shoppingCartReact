@@ -1,19 +1,29 @@
-import React, { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 
-import Checkoutpage from "./childcomponents/Checkoutpage";
-import Homepage from "./childcomponents/Homepage";
-import ItemDescriptionpage from "./childcomponents/ItemDescriptionpage";
-import Shoppage from "./childcomponents/Shoppage";
+import { ProductProvider } from "./Context";
 
 function MainParent() {
   return (
-    <div className="pageContainer">
-      <div className="header"></div>
-      <Checkoutpage />
-      <Homepage />
-      <ItemDescriptionpage />
-      <Shoppage />
-    </div>
+    <ProductProvider>
+      <div className="pageContainer">
+        <div className="header">
+          <ul>
+            <li>
+              <h1>Generic Store</h1>
+            </li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="shop">Store</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="main">
+          <Outlet />
+        </div>
+      </div>
+    </ProductProvider>
   );
 }
 
