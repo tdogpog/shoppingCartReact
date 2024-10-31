@@ -6,19 +6,30 @@ function MainParent() {
   return (
     <ProductProvider>
       <div className="pageContainer">
-        <div className="header">
-          <ul>
-            <li>
-              <h1>Generic Store</h1>
-            </li>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="shop">Store</Link>
-            </li>
-          </ul>
-        </div>
+        <nav className="header">
+          <div className="leftHeader">
+            <ul className="leftItems">
+              <li>
+                <Link to="/">
+                  <h1>Murphys Goods</h1>
+                </Link>
+              </li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="shop">Store</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="rightHeader">
+            <ul>
+              <li>
+                <Link to="checkout">Cart</Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
         <div className="main">
           <Outlet />
         </div>
