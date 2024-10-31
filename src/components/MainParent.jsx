@@ -1,10 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 
-import { ProductProvider } from "./Context";
+import { CartProvider } from "./Context";
 
 function MainParent() {
   return (
-    <ProductProvider>
+    <CartProvider>
       <div className="pageContainer">
         <nav className="header">
           <div className="leftHeader">
@@ -34,7 +34,7 @@ function MainParent() {
           <Outlet />
         </div>
       </div>
-    </ProductProvider>
+    </CartProvider>
   );
 }
 
