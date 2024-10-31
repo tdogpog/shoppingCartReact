@@ -3,43 +3,26 @@ import React, { createContext, useState, useEffect } from "react";
 //handler for the children
 //in order to get value via useContext
 //from our .provider value
-export const ProductContext = createContext();
+export const CartContext = createContext();
 
-// will apply all childrren we wrap in ProductProvider ({children})
+// will apply all childrren we wrap in
 //in our MainParent script
-export const ProductProvider = ({ children }) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          "https://fakestoreapi.com/products?limit=8"
-        );
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("error fetching products:", error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-    //call it on mount
-    fetchProducts();
-    //leave dependency empty, we only need this on mount
-  }, []);
+  function addToCart(product) {
+    setCart();
+  }
 
-  const contextValue = { products, loading, error };
+  function removeFromCart(product){
+
+  }
+
+  
+
   return (
-    <ProductContext.Provider value={contextValue}>
+    <CartContext.Provider value={}>
       {children}
-    </ProductContext.Provider>
+    </CartContext.Provider>
   );
 };

@@ -54,3 +54,7 @@ li {
   display: flex;
   align-content: center;
 }
+
+.main {
+  padding: 1.5rem;
+}
