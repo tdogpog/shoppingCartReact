@@ -58,3 +58,24 @@ li {
 .main {
   padding: 1.5rem;
 }
+
+.productContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.productItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+img {
+  height: 10rem;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+}

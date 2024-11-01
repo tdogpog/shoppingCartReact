@@ -7,6 +7,7 @@ import Homepage from "./components/childcomponents/Homepage";
 import Shoppage from "./components/childcomponents/Shoppage";
 import ItemDescriptionpage from "./components/childcomponents/ItemDescriptionpage";
 import Checkoutpage from "./components/childcomponents/Checkoutpage";
+import { CartProvider } from "./components/Context";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </StrictMode>
 );

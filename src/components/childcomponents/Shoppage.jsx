@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Context";
 
 function Shoppage() {
+  const { addToCart } = useContext(CartContext);
+
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -39,14 +42,14 @@ function Shoppage() {
     return <div>Error occurred: {error}</div>;
   }
   return (
-    <div className="homecontainer">
-      <div>
-        <h1>Items {products.length}</h1>
+    <div className="shopcontainer">
+      <h1>Items {products.length}</h1>
+      <div className="productContainer">
         {products.map((product) => (
-          <div key={product.id}>
-            <img src={product.image} />
-            <p>{product.price}</p>
-            <button></button>
+          <div className="productItem" key={product.id}>
+            <img className="shopItemImg" src={product.image} />
+            <p>${product.price}</p>
+            <button onClick={addToCart}>Add to Cart</button>
           </div>
         ))}
       </div>

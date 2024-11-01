@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useMemo } from "react";
 
 //handler for the children
 //in order to get value via useContext
@@ -43,21 +43,37 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const fullremoveFromCart = (product) => {
+  const removeFromCart = (product) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== product.id));
   };
 
-  const checkout = () => {};
+  const checkout = () => {
+    if (cartSize === 0) {
+      alert("Cart is empty");
+      return;
+    } else {
+      setCart([]);
+      alert("Thanks for purchasing");
+    }
+  };
 
-  const cartSize = () => {};
+  //memoized to prevent unnecessary repeat calcs
+  // only runs when cart changes
+  const cartSize = useMemo(
+    () => cart.reduce((total, item) => total + item.quantity, 0),
+    [cart]
+  );
 
-  const cartPrice = () => {};
+  const cartPrice = useMemo(
+    () => cart.reduce((total, item) => total + item.price * item.quantity, 0),
+    [cart]
+  );
 
   const contextValue = {
     cart,
     addToCart,
     decrementFromCart,
-    fullremoveFromCart,
+    removeFromCart,
     checkout,
     cartSize,
     cartPrice,
