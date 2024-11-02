@@ -41,13 +41,16 @@ function Shoppage() {
   if (error) {
     return <div>Error occurred: {error}</div>;
   }
+  // drilled in each product description with state={product}
   return (
     <div className="shopcontainer">
       <h1>Items {products.length}</h1>
       <div className="productContainer">
         {products.map((product) => (
           <div className="productItem" key={product.id}>
-            <img className="shopItemImg" src={product.image} />
+            <Link to={`/item/${product.id}`} state={{ product }}>
+              <img className="shopItemImg" src={product.image} />
+            </Link>
             <p>${product.price}</p>
             <button onClick={addToCart}>Add to Cart</button>
           </div>
