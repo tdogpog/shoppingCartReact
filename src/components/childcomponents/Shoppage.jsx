@@ -42,6 +42,8 @@ function Shoppage() {
     return <div>Error occurred: {error}</div>;
   }
   // drilled in each product description with state={product}
+  // also arrow ffunction the addtocart button
+  // so it onlyc alls when click, not on render
   return (
     <div className="shopcontainer">
       <h1>Items {products.length}</h1>
@@ -52,7 +54,7 @@ function Shoppage() {
               <img className="shopItemImg" src={product.image} />
             </Link>
             <p>${product.price}</p>
-            <button onClick={addToCart}>Add to Cart</button>
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>

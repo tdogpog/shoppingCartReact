@@ -26,6 +26,7 @@ export const CartProvider = ({ children }) => {
         );
       } else {
         //item not already in cart, spread cart and add to cart
+
         return [...prevCart, { ...product, quantity: 1 }];
       }
     });
